@@ -1,62 +1,74 @@
-# install-MTKClient
+# 🔧 MTKClient Installation Guide (Windows)
 
-Install MTKClient on Windows OS using the required tools and drivers.
-
-بر روی ویندوز ابزار MTKClient را با نصب وابستگی‌ها راه‌اندازی کنید.  
-Установите MTKClient в Windows с помощью необходимых инструментов и драйверов.  
-在 Windows 上使用所需的工具和驱动程序安装 MTKClient。
+This guide explains how to install [MTKClient](https://github.com/bkerler/mtkclient) on **Windows OS**, covering all necessary dependencies and tools required for working with MediaTek-based Android devices.
 
 ---
 
-## 🐍 Python
+## 📌 Requirements
 
-Install Python from the official website. Required for running MTKClient and its dependencies.  
-🔗 https://www.python.org/
-
-نصب پایتون برای اجرای MTKClient ضروری است.  
-Установите Python, необходим для запуска MTKClient.  
-安装 Python，用于运行 MTKClient。
+Before installing MTKClient, make sure the following components are installed on your system.
 
 ---
 
-## 📁 Windows File System Proxy (WinFsp)
+### 1. 🐍 Python (3.7+)
 
-Allows user-mode file systems for tools that MTKClient depends on.  
-🔗 https://winfsp.dev/rel/
+Required for running MTKClient scripts.  
+👉 https://www.python.org/
 
-WinFsp برای اجرای سیستم فایل در سطح کاربر مورد نیاز است.  
-WinFsp необходим для работы пользовательских файловых систем.  
-WinFsp 用于启用用户模式文件系统。
+> ⚠️ Important: During installation, check **“Add Python to PATH”**.
 
 ---
 
-## 🔐 Win64 OpenSSL v3.5.1
+### 2. 📁 Windows File System Proxy (WinFsp)
 
-Provides cryptographic libraries for Python modules.  
-🔗 https://slproweb.com/products/Win32OpenSSL.html
-
-کتابخانه‌های رمزنگاری موردنیاز برخی ماژول‌های پایتون را فراهم می‌کند.  
-Предоставляет криптографические библиотеки для Python.  
-为 Python 模块提供加密库。
+Provides FUSE compatibility for filesystem operations.  
+👉 https://winfsp.dev/rel/
 
 ---
 
-## 🛠 Visual Studio 2022 (Build Tools with C++)
+### 3. 🔐 Win64 OpenSSL v3.5.1
 
-Install with C++ build tools. Required for compiling some Python dependencies.  
-🔗 https://visualstudio.microsoft.com/downloads/?q=build+tools
+Used for secure SSL/TLS communication in Python modules.  
+👉 https://slproweb.com/products/Win32OpenSSL.html
 
-نصب Visual Studio با ابزار C++ برای کامپایل ماژول‌ها ضروری است.  
-Установите Visual Studio с C++ для сборки зависимостей.  
-安装带有 C++ 的 Visual Studio 以编译依赖项。
+> 💡 Download **Win64 OpenSSL v3.5.1 (Light)**.
 
 ---
 
-## ⚙️ MTKClient Installation
+### 4. 🧰 Visual Studio 2022 Build Tools
 
-Clone the repository and install required Python packages.  
+Needed to compile native Python dependencies.  
+👉 https://visualstudio.microsoft.com/downloads/?q=build+tools
+
+> ✅ Select the following during installation:
+- **Desktop development with C++**
+- Include **Windows 10/11 SDK**
+
+---
+
+## 🚀 MTKClient Installation
+
+Follow these steps to install MTKClient on Windows:
+
 ```bash
 git clone https://github.com/bkerler/mtkclient
 cd mtkclient
-pip3 install -r requirements.txt
-pip3 install .
+pip install -r requirements.txt
+pip install .
+```
+
+## 5 Install UsbDk (USB Development Kit)
+UsbDk enables low-level USB communication with MediaTek devices.
+👉 https://github.com/daynix/UsbDk/releases/
+📥 Download the latest UsbDk_*.msi and install it.
+
+---
+## 6 Install Qcom & MTK USB Drivers (Version 3.1.9)
+These drivers ensure proper detection of your device by Windows.
+> 👉 https://www.gsmofficial.com/oppo-qcom-mtk-driver/
+- 🧩 Install the drivers after connecting your phone (powered off) in BROM mode.
+---
+## 7 (Optional) Install ChimeraTool
+ChimeraTool is useful for advanced operations like FRP removal, IMEI repair, and flashing.
+> 👉 https://chimeratool.com/en/download
+- ⚠️ This is optional, but helpful for users working with multiple tools.
